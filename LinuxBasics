@@ -37,6 +37,7 @@ The cpu section reports on the use of the system’s CPU resources. The columns 
 The us column reports the amount of time that the processor spends on userland tasks, or all non-kernel processes. The sy column reports the amount of time that the processor spends on kernel related tasks. The id column reports the amount of time that the processor spends idle. The wa column reports the amount of time that the processor spends waiting for IO operations to complete before being able to continue processing tasks.
 
 ref: https://www.linode.com/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/
+https://www.howtogeek.com/424334/how-to-use-the-vmstat-command-on-linux/
 
 
 IOSTAT
