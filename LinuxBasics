@@ -1,0 +1,42 @@
+TOP
+*** All you need to know about the top command***
+https://www.booleanworld.com/guide-linux-top-command/
+
+
+VMSTAT
+$ vmstat 1 20
+procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
+ 0  0   3996 168488  57100 1368636    0    0     1     2    0    0  3  1 97  0
+ 0  0   3996 168604  57100 1368728    0    0     0     0  144  303  1  0 100  0
+ 
+ Procs
+The procs data reports the number of processing jobs waiting to run and allows you to determine if there are processes “blocking” your system from running smoothly.
+The r column displays the total number of processes waiting for access to the processor. The b column displays the total number of processes in a “sleep” state.
+
+These values are often 0.
+
+Memory
+The information displayed in the memory section provides the same data about memory usage as the command free -m.
+The swapd or “swapped” column reports how much memory has been swapped out to a swap file or disk. The free column reports the amount of unallocated memory. The buff or “buffers” column reports the amount of allocated memory in use. The cache column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.
+
+Swap
+The swap section reports the rate that memory is sent to or retrieved from the swap system. By reporting “swapping” separately from total disk activity, vmstat allows you to determine how much disk activity is related to the swap system.
+The si column reports the amount of memory that is moved from swap to “real” memory per second. The so column reports the amount of memory that is moved to swap from “real” memory per second.
+
+I/O
+The io section reports the amount of input and output activity per second in terms of blocks read and blocks written.
+The bi column reports the number of blocks received, or “blocks in”, from a disk per second. The bo column reports the number of blocks sent, or “blocks out”, to a disk per second.
+
+System
+The system section reports data that reflects the number of system operations per second.
+The in column reports the number of system interrupts per second, including interrupts from system clock. The cs column reports the number of context switches that the system makes in order to process all tasks.
+
+CPU
+The cpu section reports on the use of the system’s CPU resources. The columns in this section always add to 100 and reflect “percentage of available time”.
+The us column reports the amount of time that the processor spends on userland tasks, or all non-kernel processes. The sy column reports the amount of time that the processor spends on kernel related tasks. The id column reports the amount of time that the processor spends idle. The wa column reports the amount of time that the processor spends waiting for IO operations to complete before being able to continue processing tasks.
+
+ref: https://www.linode.com/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/
+
+
+IOSTAT
