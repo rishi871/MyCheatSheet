@@ -1,0 +1,54 @@
+Browser Extract URL ---> Browser Cache ---> OS Level cache ( nscd/dnsmasq ) ---> /etc/resolve.conf ---> DNS cache --Next and so on
+until reaches to Authorative server to get answer of dns query.
+
+Ref:
+https://www.linode.com/docs/networking/dns/use-dig-to-perform-manual-dns-queries/
+https://www.thegeekstuff.com/2012/02/dig-command-examples/
+
+# dig +trace www.facebook.com
+
+; <<>> DiG 9.11.4-P2-RedHat-9.11.4-9.P2.el7 <<>> +trace www.facebook.com
+;; global options: +cmd
+.			518400	IN	NS	C.ROOT-SERVERS.NET.
+.			518400	IN	NS	D.ROOT-SERVERS.NET.
+.			518400	IN	NS	E.ROOT-SERVERS.NET.
+.			518400	IN	NS	F.ROOT-SERVERS.NET.
+.			518400	IN	NS	G.ROOT-SERVERS.NET.
+.			518400	IN	NS	H.ROOT-SERVERS.NET.
+.			518400	IN	NS	I.ROOT-SERVERS.NET.
+.			518400	IN	NS	J.ROOT-SERVERS.NET.
+.			518400	IN	NS	K.ROOT-SERVERS.NET.
+.			518400	IN	NS	L.ROOT-SERVERS.NET.
+.			518400	IN	NS	M.ROOT-SERVERS.NET.
+.			518400	IN	NS	A.ROOT-SERVERS.NET.
+.			518400	IN	NS	B.ROOT-SERVERS.NET.
+;; Received 239 bytes from 127.0.0.11#53(127.0.0.11) in 0 ms
+
+com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
+com.			172800	IN	NS	m.gtld-servers.net.
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			172800	IN	NS	a.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	b.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	l.gtld-servers.net.
+com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	g.gtld-servers.net.
+com.			86400	IN	DS	30909 8 2 E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CF C41A5766
+com.			86400	IN	RRSIG	DS 8 1 86400 20200124050000 20200111040000 33853 . jGiNDpfFXDtNO+h1OTpBXdq8SsXo0axgEtsSBynBC8p7KH4RfzLvbDdg aYBcsotRjVSH1HyNTpxMyyq2CLC3tAHIy1sOlvV0O/PJIJ9XVoFe+pLQ qb3Xj1iri5ophbUWY//+y88fcOHxEwxa8Dz8k42PLNNnNn9Suy76JzU+ yzG0+g3IETUSV3mkude0FhfyBEfFtM7OPAIHR31jqnGqBLkUkwR1IOKA cGW4kCIPGSlp95TniNnQb5Tqi7cBENeO+ehJihbRzhBgP9+ALzt2tgQ+ IXqg4rH9Nu6WBYT0DeEZrTqcvvKADA9vkllN/g027PuZoCWEdGgGyhIo lPY3Dg==
+;; Received 1176 bytes from 202.12.27.33#53(M.ROOT-SERVERS.NET) in 121 ms
+
+facebook.com.		172800	IN	NS	a.ns.facebook.com.
+facebook.com.		172800	IN	NS	b.ns.facebook.com.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN NSEC3 1 1 0 - CK0Q1GIN43N1ARRC9OSM6QPQR81H5M9A NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN RRSIG NSEC3 8 2 86400 20200118054808 20200111043808 12163 com. mJDVyBXNFu4QvSm0aiiGqYePcLyOMfDG98KMTklwbotug692+YknzpTG ItGMpe3j/gtjgR3jHhqerUbLBcpBvVXV0fBzbvK9T0Aq1y3+GDFlMpca AI2lyZRU8vW6LktxyxklKmfsw63i012yukjg1Lg4lZRQZ08WVSFMV+pJ svYqBKt3hagff6Sk9ceIyr70dEaI8lAH9z2QTI5DZOdFuQ==
+I28FR7CPSC0NAN7MFB7VRGH5K8CSQL9D.com. 86400 IN NSEC3 1 1 0 - I28GV70FK5CSH5000HGI7KQ9LRH10BSL NS DS RRSIG
+I28FR7CPSC0NAN7MFB7VRGH5K8CSQL9D.com. 86400 IN RRSIG NSEC3 8 2 86400 20200116062035 20200109051035 12163 com. kzvcTudph+R2nclLAjWQGBQx8cw9Esmh8YUyN7i7zGCgS3qmY2OE0ia3 c9UKT2KfUHtxFjdA401fcwf3u7tiyJ1prX9OPi9PDPQ9/VBf1IRUWPDy rWZz3N+qhcQefkTNMs/yt8jRgdOLoHvbeikTnZ77vU4jHhtLJEUi2vyd Dsyb/yLIO/bdLgl40EtMuiwKfutBRi83DrDn3tQ+/e/q4A==
+;; Received 717 bytes from 192.33.14.30#53(b.gtld-servers.net) in 61 ms
+
+www.facebook.com.	3600	IN	CNAME	star-mini.c10r.facebook.com.
+;; Received 102 bytes from 69.171.239.12#53(a.ns.facebook.com) in 62 ms
+
